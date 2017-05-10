@@ -1,9 +1,11 @@
 package com.classliu.music.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.classliu.music.R;
@@ -19,7 +21,7 @@ public class BeginActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setView();
         setContentView(R.layout.activity_begin);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -33,13 +35,16 @@ public class BeginActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(BeginActivity.this, ScrollingActivity.class));
-                MusicMainActivity.taransfromInNavgetion(BeginActivity.this,imageView,null);
+                startActivity(new Intent(BeginActivity.this, MusicPlayerActivity.class));
+//                MusicMainActivity.taransfromInNavgetion(BeginActivity.this,imageView,null);
             }
         });
     }
 
-
+    private void setView() {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
 
 
 

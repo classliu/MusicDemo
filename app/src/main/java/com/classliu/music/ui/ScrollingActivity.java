@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.classliu.music.R;
 import com.classliu.music.adapter.MyRecylerAdapter;
@@ -167,5 +168,10 @@ public class ScrollingActivity extends AppCompatActivity {
             getWindow().setEnterTransition(transition);
             getWindow().setReturnTransition(transition);
         }
+    }
+
+    private void setView() {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 }

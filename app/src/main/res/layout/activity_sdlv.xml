@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.yydcdut.sdlv.SlideAndDragListView
+            android:id="@+id/lv_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:divider="#44000000"
+            android:dividerHeight="0.2dp"
+            android:listSelector="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tv_stay_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="我在activity上"
+            android:textColor="#000"
+            android:textSize="22sp" />
+
+
+    </FrameLayout>
+
+
+</RelativeLayout>
