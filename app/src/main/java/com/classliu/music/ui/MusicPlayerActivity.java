@@ -1,5 +1,6 @@
 package com.classliu.music.ui;
 
+import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -38,11 +39,12 @@ public class MusicPlayerActivity extends FragmentActivity implements SlideAndDra
     private Menu mMenu;
     private List<ApplicationInfo> mAppList;
     private SlideAndDragListView<ApplicationInfo> mListView;
-
+    private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sdlv);
+        setContentView(R.layout.activity_music_sdlv);
+        mContext = this;
         setView();
         initData();
         initMenu();
@@ -84,6 +86,8 @@ public class MusicPlayerActivity extends FragmentActivity implements SlideAndDra
 
         mListView.addHeaderView(stayView);
 
+        mListView.addFooterView(header);
+        mListView.addFooterView(header);
 
         mListView.setMenu(mMenu);
 
@@ -146,7 +150,8 @@ public class MusicPlayerActivity extends FragmentActivity implements SlideAndDra
             ApplicationInfo item = (ApplicationInfo) this.getItem(position);
             cvh.txtName.setText(item.loadLabel(getPackageManager()));
             cvh.imgLogo.setImageDrawable(item.loadIcon(getPackageManager()));
-            cvh.imgLogo2.setImageDrawable(item.loadIcon(getPackageManager()));
+            cvh.imgLogo2.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_move));
+
             return convertView;
         }
 
