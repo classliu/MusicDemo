@@ -16,6 +16,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -38,13 +39,6 @@ public class ScrollingActivity extends AppCompatActivity {
         ActivityCompat.startActivity(activity, intent, optionsCompat.toBundle());
     }
 
-    public static void launch(AppCompatActivity activity, View transitionView, String url) {
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                activity, transitionView, EXTRA_IMAGE);
-        Intent intent = new Intent(activity, ScrollingActivity.class);
-        intent.putExtra(EXTRA_IMAGE, url);
-        ActivityCompat.startActivity(activity, intent, options.toBundle());
-    }
 
 
     private CollapsingToolbarLayout collapsingToolbarLayout;
@@ -152,13 +146,14 @@ public class ScrollingActivity extends AppCompatActivity {
     };
 
 
-    /*@Override public boolean dispatchTouchEvent(MotionEvent motionEvent) {
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent motionEvent) {
         try {
             return super.dispatchTouchEvent(motionEvent);
         } catch (NullPointerException e) {
             return false;
         }
-    }*/
+    }
 
 
     private void initActivityTransitions() {

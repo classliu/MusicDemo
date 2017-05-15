@@ -6,17 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.classliu.music.R;
+import com.classliu.music.widget.CircleImageView;
 
 /**
  * Created by ji_cheng on 2017/5/5.
  */
 
-public class BeginActivity extends AppCompatActivity {
+public class BeginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView imageView;
+    private CircleImageView coverView;
+    private Button btnScroller;
+    private Button btnTomain;
+    private Button btnToplayer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,14 +36,14 @@ public class BeginActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        imageView = (ImageView) findViewById(R.id.imageview);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(BeginActivity.this, MusicPlayerActivity.class));
-//                MusicMainActivity.taransfromInNavgetion(BeginActivity.this,imageView,null);
-            }
-        });
+        btnScroller = (Button) findViewById(R.id.btn_scroller);
+        btnScroller.setOnClickListener(this);
+        btnTomain = (Button) findViewById(R.id.btn_tomain);
+        btnTomain.setOnClickListener(this);
+        btnToplayer = (Button) findViewById(R.id.btn_toplayer);
+        btnToplayer.setOnClickListener(this);
+        coverView = (CircleImageView) findViewById(R.id.imageview);
+
     }
 
     private void setView() {
@@ -47,5 +52,18 @@ public class BeginActivity extends AppCompatActivity {
     }
 
 
-
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_scroller:
+                ScrollingActivity.taransfromInNavgetion(BeginActivity.this, coverView, null);
+                break;
+            case R.id.btn_tomain:
+                MusicMainActivity.taransfromInNavgetion(BeginActivity.this, coverView, null);
+                break;
+            case R.id.btn_toplayer:
+                startActivity(new Intent(BeginActivity.this, MusicPlayerActivity.class));
+                break;
+        }
+    }
 }

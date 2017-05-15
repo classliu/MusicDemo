@@ -20,10 +20,10 @@
         <TextView
             android:id="@+id/tv_stay_scroll"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/stay_view_height"
             android:background="#FFFFFF"
             android:gravity="center"
-            android:text="我在activity上"
+            android:text="我是悬浮的bar"
             android:textColor="#000"
             android:textSize="22sp" />
 

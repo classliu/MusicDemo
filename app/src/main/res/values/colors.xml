@@ -18,4 +18,5 @@
     <color name="holo_gray_light">#33999999</color>
     <color name="holo_orange_light">#ffffbb33</color>
     <color name="holo_orange_dark">#ffff8800</color>
+    <color name="theme_music">#FF8A79</color>
 </resources>

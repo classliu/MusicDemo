@@ -8,10 +8,11 @@
     <TextView
         android:id="@+id/tv_stay_here"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/stay_view_height"
         android:background="#FFF"
         android:gravity="center"
-        android:text="我在listView上"
+        android:text="我在背后服务"
         android:textColor="#000"
         android:textSize="20sp" />
+    
 </LinearLayout>

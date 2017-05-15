@@ -7,14 +7,38 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/theme_music" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:orientation="horizontal">
 
-    <ImageView
+        <Button
+            android:id="@+id/btn_scroller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="scroller" />
+
+        <Button
+            android:id="@+id/btn_tomain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ToMain" />
+
+        <Button
+            android:id="@+id/btn_toplayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ToPlayer" />
+    </LinearLayout>
+
+    <com.classliu.music.widget.CircleImageView
         android:id="@+id/imageview"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_centerInParent="true"
         android:src="@drawable/star" />
-
 </RelativeLayout>

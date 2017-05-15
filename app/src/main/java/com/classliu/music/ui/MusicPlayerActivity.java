@@ -40,6 +40,7 @@ public class MusicPlayerActivity extends FragmentActivity implements SlideAndDra
     private List<ApplicationInfo> mAppList;
     private SlideAndDragListView<ApplicationInfo> mListView;
     private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,20 +75,17 @@ public class MusicPlayerActivity extends FragmentActivity implements SlideAndDra
 
 
     private TextView tvStayScroll;
+    private View stayView;
 
     public void initUiAndListener() {
         mListView = (SlideAndDragListView) findViewById(R.id.lv_edit);
         tvStayScroll = (TextView) findViewById(R.id.tv_stay_scroll);
         View header = LayoutInflater.from(this).inflate(R.layout.activity_music, null);
 
-        final View stayView = LayoutInflater.from(this).inflate(R.layout.stay_view, null);
+        stayView = LayoutInflater.from(this).inflate(R.layout.stay_view, null);
 
         mListView.addHeaderView(header);
-
         mListView.addHeaderView(stayView);
-
-        mListView.addFooterView(header);
-        mListView.addFooterView(header);
 
         mListView.setMenu(mMenu);
 
@@ -101,21 +99,28 @@ public class MusicPlayerActivity extends FragmentActivity implements SlideAndDra
 
         mListView.setOnListScrollListener(new SlideAndDragListView.OnListScrollListener() {
             @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) { }
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                Log.e("----onScrollChange--2--", firstVisibleItem + "----" + totalItemCount + "--top----====" + stayView.getTop());
-                makeStayChange(stayView.getTop());
+                makeStayChange(firstVisibleItem);
             }
         });
     }
 
 
-    private void makeStayChange(int top) {
-        tvStayScroll.setTranslationY(Math.max(0, top));
-    }
+    //悬浮的bar
+    private void makeStayChange(int firstVisibleItem) {
 
+        if (firstVisibleItem <= 3) {
+            int top = stayView.getTop();
+            tvStayScroll.setTranslationY(Math.max(0, top));
+        } else if (firstVisibleItem > 3 && firstVisibleItem < 10) {
+            tvStayScroll.setTranslationY(0);
+        }
+
+    }
 
 
     private BaseAdapter mAdapter = new BaseAdapter() {
@@ -150,7 +155,7 @@ public class MusicPlayerActivity extends FragmentActivity implements SlideAndDra
             ApplicationInfo item = (ApplicationInfo) this.getItem(position);
             cvh.txtName.setText(item.loadLabel(getPackageManager()));
             cvh.imgLogo.setImageDrawable(item.loadIcon(getPackageManager()));
-            cvh.imgLogo2.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.ic_move));
+            cvh.imgLogo2.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_move));
 
             return convertView;
         }

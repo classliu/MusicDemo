@@ -49,7 +49,7 @@ public class MusicService extends Service implements CacheListener {
     }
 
     public class MyBinder extends Binder {
-        public   MusicService getService() {
+        public MusicService getService() {
             return MusicService.this;
         }
     }
