@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_stay_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/stay_view_height"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:text="我是Title"
+        android:textColor="#000"
+        android:textSize="22sp" />
+
+    <!--  <com.yydcdut.sdlv.SlideAndDragListView
+          android:id="@+id/lv_edit"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@android:color/white"
+          android:divider="#22000000"
+          android:dividerHeight="0.2dp"
+          android:focusable="true"
+          android:listSelector="@android:color/white"
+          android:saveEnabled="true"
+          android:visibility="gone" />
+  -->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+    <ListView
+        android:id="@+id/lv_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+</LinearLayout>

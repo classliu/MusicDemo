@@ -13,11 +13,14 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.classliu.music.R;
+import com.classliu.music.widget.CircleImageView;
 import com.yydcdut.sdlv.Menu;
 import com.yydcdut.sdlv.MenuItem;
 import com.yydcdut.sdlv.SlideAndDragListView;
@@ -31,7 +34,7 @@ import java.util.List;
 public class MusicPlayerActivity extends FragmentActivity implements SlideAndDragListView.OnListItemLongClickListener,
         SlideAndDragListView.OnDragListener, SlideAndDragListView.OnSlideListener,
         SlideAndDragListView.OnListItemClickListener, SlideAndDragListView.OnMenuItemClickListener,
-        SlideAndDragListView.OnItemDeleteListener {
+        SlideAndDragListView.OnItemDeleteListener, View.OnClickListener {
 
 
     private static final String TAG = MusicPlayerActivity.class.getSimpleName();
@@ -76,12 +79,29 @@ public class MusicPlayerActivity extends FragmentActivity implements SlideAndDra
 
     private TextView tvStayScroll;
     private View stayView;
+    private ImageView ivCloseMusic;
+    private CircleImageView ivBookMusicCover;
+    private TextView tvMusicName;
+
+    private TextView tvMusicPlayingTime;
+    private SeekBar musicSeekBar;
+    private TextView tvMusicAllTime;
+
+    private ImageView ivDeleteMusic;
+    private ImageView ivMusicPrevious;
+    private ImageView ivPlayStop;
+    private ImageView ivNextMusic;
+
+    private ImageView ivPlaymode;
+    private TextView tvPlaymode;
+    private FrameLayout flMusicPlaymode;
+
 
     public void initUiAndListener() {
         mListView = (SlideAndDragListView) findViewById(R.id.lv_edit);
         tvStayScroll = (TextView) findViewById(R.id.tv_stay_scroll);
-        View header = LayoutInflater.from(this).inflate(R.layout.activity_music, null);
-
+        View header = LayoutInflater.from(this).inflate(R.layout.music_header, null);
+        initHeaderView(header);
         stayView = LayoutInflater.from(this).inflate(R.layout.stay_view, null);
 
         mListView.addHeaderView(header);
@@ -107,6 +127,32 @@ public class MusicPlayerActivity extends FragmentActivity implements SlideAndDra
                 makeStayChange(firstVisibleItem);
             }
         });
+    }
+
+    private void initHeaderView(View v) {
+        ivCloseMusic = (ImageView) v.findViewById(R.id.iv_close_music);
+        ivBookMusicCover = (CircleImageView) v.findViewById(R.id.iv_music_cover);
+        tvMusicName = (TextView) v.findViewById(R.id.tv_music_name);
+        tvMusicPlayingTime = (TextView) v.findViewById(R.id.tv_music_playing_time);
+        musicSeekBar = (SeekBar) v.findViewById(R.id.music_seek_bar);
+        musicSeekBar.setFocusable(true);
+        musicSeekBar.setEnabled(true);
+        tvMusicAllTime = (TextView) v.findViewById(R.id.tv_music_all_time);
+        ivDeleteMusic = (ImageView) v.findViewById(R.id.iv_delete_music);
+        ivMusicPrevious = (ImageView) v.findViewById(R.id.iv_music_previous);
+        ivPlayStop = (ImageView) v.findViewById(R.id.iv_play_stop);
+        ivNextMusic = (ImageView) v.findViewById(R.id.iv_next_music);
+        ivPlaymode = (ImageView) v.findViewById(R.id.iv_playmode);
+        tvPlaymode = (TextView) v.findViewById(R.id.tv_playmode);
+        flMusicPlaymode = (FrameLayout) v.findViewById(R.id.fl_music_playmode);
+
+
+        ivCloseMusic.setOnClickListener(this);
+        ivMusicPrevious.setOnClickListener(this);
+        ivPlayStop.setOnClickListener(this);
+        ivNextMusic.setOnClickListener(this);
+        flMusicPlaymode.setOnClickListener(this);
+        ivDeleteMusic.setOnClickListener(this);
     }
 
 
@@ -230,5 +276,30 @@ public class MusicPlayerActivity extends FragmentActivity implements SlideAndDra
     public void onItemDelete(View view, int position) {
         mAppList.remove(position - mListView.getHeaderViewsCount());
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_play_stop:
+
+                break;
+            case R.id.iv_close_music:
+
+                onBackPressed();
+                break;
+            case R.id.iv_music_previous:
+
+                break;
+            case R.id.iv_next_music:
+
+                break;
+            case R.id.iv_delete_music:
+
+                break;
+            case R.id.fl_music_playmode:
+
+                break;
+        }
     }
 }

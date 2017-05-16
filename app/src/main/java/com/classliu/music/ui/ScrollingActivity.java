@@ -120,20 +120,20 @@ public class ScrollingActivity extends AppCompatActivity {
 
             }
         });*/
-        recyclerView = (RecyclerView) findViewById(R.id.recylerview);
+        /*recyclerView = (RecyclerView) findViewById(R.id.recylerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(linearLayoutManager);*/
 
-        List<Modle> tempList = new ArrayList<>();
+        /*List<Modle> tempList = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             Modle modle = new Modle();
             modle.text = "this is numer" + (i + 1) + "song";
             tempList.add(modle);
         }
 
-        adapter = new MyRecylerAdapter(this, tempList);
+        adapter = new MyRecylerAdapter(this, tempList);*/
         //recyclerView.setAdapter(adapter);
-        handler.sendEmptyMessageDelayed(0, 500);
+       // handler.sendEmptyMessageDelayed(0, 500);
     }
 
     MyRecylerAdapter adapter;

@@ -8,7 +8,7 @@
     tools:context="com.classliu.music.ui.ScrollingActivity"
     tools:showIn="@layout/activity_scrolling">
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -39,11 +39,16 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recylerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+         <android.support.v7.widget.RecyclerView
+             android:id="@+id/recylerview"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" />
 
+    </LinearLayout>-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/large_text"
+        android:textSize="16sp" />
 
 </android.support.v4.widget.NestedScrollView>
