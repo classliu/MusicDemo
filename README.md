@@ -1,5 +1,5 @@
 
-# 模仿 AppleMusic 编写
+# 模仿 AppleMusic
 实现方式 分成三种 :
 第一种: ScollerActivity   用到的是MetalDesign 思想 但是难以实现产品需求 交互实现不流畅
 
